@@ -1,0 +1,29 @@
+{
+  "name": "react-ultimate",
+  "version": "1.0.0",
+  "description": "This is a react code folder",
+  "homepage": "https://github.com/MM2001994/react#readme",
+  "bugs": {
+    "url": "https://github.com/MM2001994/react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MM2001994/react.git"
+  },
+  "license": "ISC",
+  "author": "Manish Mondal",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "browserlist": [
+    "last 2 versions"
+  ]
+}
