@@ -1,0 +1,47 @@
+// // const heading = React.createElement("h1", {id : "heading", xyz : "abc"}, "Hello from React World!!");  // first one is the tag name, second is the attribute and the last one is the children
+
+// // const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// // root.render(heading);
+
+
+// /*
+//     <div id="parent">
+//         <div id="child">
+//             <h1></h1>
+//         </div>
+//     </div>
+// */
+// import React  from "react";
+// import ReactDOM from "react-dom/client"
+
+// // const parent = React.createElement("div", {id : "parent"} , [React.createElement("div", {id : "child1"} , React.createElement("h1", {id : "heading1"} , "Hi from H1 Tag of Child 1")), React.createElement("div", {id : "child2"} , [React.createElement("h1", {id : "heading2"} , "Hi from H1 Tag of Child 2"), React.createElement("h2", {id : "heading4"} , "Hi from H2 Tag of Child 2")]) ]);
+
+// // const root = ReactDOM.createRoot(document.getElementById("root"));
+
+
+// // JSX => HTML like or XML like syntax. PARCEL => BABEL => transpile this code into understandable js engine code
+
+// const JsxHeading = () => (<h1 className="heading" tabIndex={5}>Hello from React Element !!!</h1>);
+
+
+// const HeadingComponent = () => (
+//     <div id="conatiner">
+//         <JsxHeading/>
+//         <h1 className="heading">Hello from React Component !!!</h1>
+//     </div>
+// )
+
+
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(<HeadingComponent />);
+
+    <!-- <script>
+        const heading = document.createElement("h1");
+        heading.innerHTML= "Hello World from JavaScript!!!";
+
+        const root = document.getElementById("root");
+        root.appendChild(heading);
+    </script> -->
+    <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> -->
