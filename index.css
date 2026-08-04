@@ -15,13 +15,13 @@
     display: block;
 }
 
-.nav-icons >ul >li {
+.nav-icons>ul>li {
 
     padding: 5px;
     margin: 10px;
 }
 
-.nav-icons > ul {
+.nav-icons>ul {
     font-size: 24px;
     display: flex;
     list-style-type: none;
@@ -39,12 +39,95 @@
     padding: 5px;
 }
 
-.menu:hover{
+.restaurant-menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.restaurant-details-card {
+    width: 100%;
+    background-color: #fff;
+    padding: 28px;
+    border-radius: 18px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.restaurant-details-card h1 {
+    margin-bottom: 12px;
+}
+
+.restaurant-details-card p {
+    margin: 8px 0;
+    color: #444;
+    line-height: 1.7;
+}
+
+.restaurant-menu {
+    box-sizing: border-box;
+    background-color: #f7f8fa;
+    width: 100%;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.restaurant-menu h1,
+.restaurant-menu h2 {
+    margin: 0 0 16px;
+}
+
+.restaurant-menu p {
+    margin: 0 0 12px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.restaurant-menu ul {
+    list-style: none;
+    margin: 24px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.restaurant-menu li {
+    background: #fff;
+    border: 1px solid #e2e4e8;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.restaurant-menu li h3 {
+    margin: 16px 16px 8px;
+    font-size: 1.1rem;
+}
+
+.restaurant-menu li p {
+    margin: 0 16px 12px;
+    color: #555;
+}
+
+.restaurant-menu img.fit-cover {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.menu:hover {
     cursor: pointer;
     border: 1px solid black;
 }
 
-.fit-cover{
+.fit-cover {
     width: 100%;
     height: auto;
     object-fit: cover;
@@ -52,7 +135,8 @@
 }
 
 /* Make headings wrap and scale inside the narrow card */
-.menu h4, .menu .card-title{
+.menu h4,
+.menu .card-title {
     margin: 8px 0 4px;
     font-size: 1rem;
     line-height: 1.2;
@@ -62,29 +146,29 @@
 }
 
 /* Smaller supporting text spacing inside the menu */
-.menu p{
+.menu p {
     margin: 0 0 8px 0;
 }
 
-.res-container{
+.res-container {
     display: flex;
     flex-wrap: wrap;
 }
 
-.filter{
+.filter {
     display: flex;
 }
 
-.filter-btn{
+.filter-btn {
     margin: 10px;
 }
 
-.shimmer-container{
+.shimmer-container {
     display: flex;
     flex-wrap: wrap;
 }
 
-.shimmer-card{
+.shimmer-card {
     width: 200px;
     height: 400px;
     background-color: #f6f7f8;
@@ -92,7 +176,7 @@
     margin: 10px;
 }
 
-.login-btn{
+.login-btn {
     margin: 10px;
     border-radius: 4px;
     cursor: pointer;

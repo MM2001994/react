@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { CDN_URL } from "../utils/constants";
 
 const RestaurantCard = ({ resData }) => {
@@ -9,7 +10,9 @@ const RestaurantCard = ({ resData }) => {
         <h4>{costForTwo} </h4>
         <h4>{avgRating} stars</h4>
         <h4>{deliveryTime} mins</h4>
+        <Link to={`/restaurants/${resData.info.id}`}>
+            <button className="menu-btn">View Menu</button>
+        </Link>
     </div>
 }
-
 export default RestaurantCard;
