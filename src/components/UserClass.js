@@ -1,6 +1,8 @@
 // Class Based Component
-
+import {Link} from 'react-router-dom';
 import React from 'react';
+import { GITHUB_API_URL } from '../utils/constants';
+import { GITHUB_API_URL2 } from '../utils/constants';
 
 class UserClass extends React.Component {
     constructor(props) {
@@ -9,23 +11,41 @@ class UserClass extends React.Component {
 
         this.state = {
             count: 0,
-            count2: 1
+            count2: 1,
+            data: null
         }
+        //console.log("UserClass constructor called");
+    }
+
+    async componentDidMount() {
+        //console.log("UserClass componentDidMount called");
+        const data = await fetch(GITHUB_API_URL);
+        const jsonData = await data.json();
+        console.log(jsonData);
+
+        this.setState({
+            data: jsonData
+        });
     }
 
     render() {
-        const { name, email, location } = this.props;
-        const { count, count2 } = this.state;
+        //console.log("UserClass render called");
+        // const { name, email, location } = this.props;
+        const {name, email, location, avatar_url } = this.state.data || {};
         return (
             <div className="user-info">
-                <h2>Count: {count}</h2>
+                {/* <h2>Count: {count}</h2>
                 <button onClick={() => this.setState({ count: count + 1 })}>Increment Count</button>
                 <button onClick={() => {
                     this.setState({ count: 0 })
-                }}>Reset Count</button>
+                }}>Reset Count</button> */}
+                <img src={avatar_url} alt="User Avatar" />
                 <h3>{name}</h3>
                 <p>{email}</p>
                 <p>{location}</p>
+                <Link to={GITHUB_API_URL2}>
+                    <button>View Profile</button>
+                </Link>
             </div>
         )
     };
