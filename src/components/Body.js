@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import { SWIGGY_API_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import {Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
     // Local super variable using useState Hook
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+    const onlineStatus = useOnlineStatus();
     const [searchText, setSearchText] = useState("");
 
     
@@ -86,6 +88,15 @@ const Body = () => {
 
     if (listOfRestaurants.length === 0) {
         return <Shimmer />;
+    }
+
+    if (onlineStatus === false) {
+        return (
+            <div className="offline-message">
+                <h2>You are offline!</h2>
+                <p>Please check your internet connection.</p>
+            </div>
+        );
     }
 
     return <div className="body">

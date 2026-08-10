@@ -1,35 +1,12 @@
-import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { CDN_URL } from "../utils/constants";
 import { useParams } from "react-router-dom";
-import { swiggyUrl } from "../utils/constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 
 const ResInfo = () => {
     const { resId } = useParams();
-    const [resInfo, setResInfo] = useState(null);
-
-    useEffect(() => {
-        fetchResInfo();
-    }, []);
-
-    const fetchResInfo = async () => {
-        try {
-            const response = await fetch("https://corsproxy.io/?" + encodeURIComponent(swiggyUrl) + resId);
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const json = await response.json();
-            console.log("Swiggy Data:", json);
-
-            setResInfo(json?.data);
-
-        } catch (error) {
-            console.error("Fetch failed:", error);
-        }
-    };
+    const  resInfo = useRestaurantMenu(resId);
 
     const {
         name,
