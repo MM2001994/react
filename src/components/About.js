@@ -16,15 +16,16 @@ class About extends React.Component {
 
     render() {
         console.log("About render called");
-        return (<div className="about">
-        <h1>About Us</h1>
-        <p>Welcome to our about page!</p>
+        return (
+            <div className="about max-w-4xl mx-auto p-4 sm:p-6 my-4 rounded-xl bg-white shadow-md">
+                <h1 className="text-2xl sm:text-3xl font-bold mb-3">About Us</h1>
+                <p className="text-gray-700">Welcome to our about page!</p>
 
-        
-        {/* <User name="Manish Mondal (functional)" email="manish.mondal@example.com" location="New York" /> */}
-        <UserClass />
-        {/* <UserClass name="Elon Musk(class)" email="elon.musk@example.com" location="New York" /> */}
-    </div>)
+                <div className="mt-4">
+                    <UserClass />
+                </div>
+            </div>
+        );
     }
 }
 

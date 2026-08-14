@@ -2,7 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import { SWIGGY_API_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
@@ -12,7 +12,7 @@ const Body = () => {
     const onlineStatus = useOnlineStatus();
     const [searchText, setSearchText] = useState("");
 
-    
+
     //     useEffect(() => {
     //         const fetchData = async () => {
     //             const data = await fetch(
@@ -99,36 +99,53 @@ const Body = () => {
         );
     }
 
-    return <div className="body">
-        <div className="filter">
-            <div className="search">
-                <input
-                    type="text"
-                    placeholder="Search to find food"
-                    value={searchText}
-                    onChange={(e) => setSearchText(e.target.value)}
-                />
-                <button onClick={() => {
-                    const filtered = listOfRestaurants.filter((res) =>
-                        res.info.name.toLowerCase().includes(searchText.toLowerCase())
-                    );
-                    setFilteredRestaurants(filtered);
-                }}>Search</button>
-            </div>
-            <button className="filter-btn" onClick={() => {
-                const filtered = listOfRestaurants.filter(
-                    (res) => res.info.avgRating > 4.5
-                )
-                setFilteredRestaurants(filtered);
-            }}>Top Rated Restaurants</button>
-        </div>
+    return (
+        <div className="body py-4">
+            <div className="flex flex-col gap-3 p-2 sm:flex-row sm:items-center">
+                <div className="search w-full sm:w-auto">
+                    <input
+                        className="w-full sm:w-64 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-200"
+                        type="text"
+                        placeholder="Search to find food"
+                        value={searchText}
+                        onChange={(e) => setSearchText(e.target.value)}
+                    />
+                </div>
 
-        <div className="res-container">
-            {filteredRestaurants.map((restaurant) => (
-                <RestaurantCard key={restaurant.info.id} resData={restaurant} />
-            ))}
+                <div className="flex flex-wrap items-center gap-2">
+                    <button
+                        className="py-2 px-3 bg-green-200 rounded-lg hover:bg-green-300 hover:shadow-md hover:scale-105 transition-all duration-200"
+                        onClick={() => {
+                            const filtered = listOfRestaurants.filter((res) =>
+                                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                            );
+                            setFilteredRestaurants(filtered);
+                        }}
+                    >
+                        Search
+                    </button>
+
+                    <button
+                        className="py-2 px-3 cursor-pointer bg-gray-200 rounded-lg hover:bg-gray-300 hover:shadow-md hover:scale-105 transition-all duration-200"
+                        onClick={() => {
+                            const filtered = listOfRestaurants.filter(
+                                (res) => res.info.avgRating > 4.5
+                            );
+                            setFilteredRestaurants(filtered);
+                        }}
+                    >
+                        Top Rated Restaurants
+                    </button>
+                </div>
+            </div>
+
+            <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {filteredRestaurants.map((restaurant) => (
+                    <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+                ))}
+            </div>
         </div>
-    </div >
+    );
 
 }
 export default Body;
