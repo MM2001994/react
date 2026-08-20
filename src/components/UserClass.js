@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import React from 'react';
 import { GITHUB_API_URL } from '../utils/constants';
 import { GITHUB_API_URL2 } from '../utils/constants';
+import UserContext from '../utils/UserContext';
 
 class UserClass extends React.Component {
     constructor(props) {
@@ -46,6 +47,14 @@ class UserClass extends React.Component {
                 <Link to={GITHUB_API_URL2}>
                     <button className='p-1 bg-gray-400 rounded-lg cursor-pointer  hover:bg-gray-600 hover:text-white transition'>View Profile</button>
                 </Link>
+                <div>
+                    LoggedIn User
+                    <UserContext.Consumer>
+                        {({ loggedInUser }) => (
+                            <h2 className='text-lg font-bold'>{loggedInUser}</h2>
+                        )}
+                    </UserContext.Consumer>
+                </div>
             </div>
         )
     };

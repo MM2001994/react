@@ -1,12 +1,14 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const onlineStatus = useOnlineStatus();
+    const { loggedInUser } = useContext(UserContext);
 
     return (
         <div className="flex flex-col gap-3 bg-red-200 m-2 rounded-lg shadow-md shadow-red-200/50 px-4 py-3 sm:flex-row sm:justify-between sm:items-center">
@@ -56,6 +58,9 @@ const Header = () => {
                     >
                         {isLoggedIn ? "Logout" : "Login"}
                     </button>
+                    <li className="p-2 sm:p-4 transition-all duration-200 hover:text-red-600 hover:font-semibold">
+                        <p>{loggedInUser}</p>
+                    </li>
                 </ul>
             </div>
         </div>

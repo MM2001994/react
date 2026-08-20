@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { HigherRestaurantCard } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import { SWIGGY_API_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
@@ -12,6 +12,7 @@ const Body = () => {
     const onlineStatus = useOnlineStatus();
     const [searchText, setSearchText] = useState("");
 
+    const RestaurantCardVeg = HigherRestaurantCard(RestaurantCard);
 
     //     useEffect(() => {
     //         const fetchData = async () => {
@@ -75,7 +76,7 @@ const Body = () => {
                 "https://corsproxy.io/?url=" + encodeURIComponent(SWIGGY_API_URL)
             );
             const json = await data.json();
-            console.log(json);
+            // console.log(json);
 
             const restaurants = json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
             if (restaurants) {
@@ -141,7 +142,11 @@ const Body = () => {
 
             <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {filteredRestaurants.map((restaurant) => (
-                    <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+                    restaurant.info.veg ? (
+                        <RestaurantCardVeg key={restaurant.info.id} resData={restaurant} />
+                    ) : (
+                        <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+                    )
                 ))}
             </div>
         </div>

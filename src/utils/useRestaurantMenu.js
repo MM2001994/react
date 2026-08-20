@@ -12,7 +12,7 @@ const useRestaurantMenu = (resId) => {
             const response = await fetch("https://corsproxy.io/?" + encodeURIComponent(swiggyUrl) + resId);
 
             const json = await response.json();
-            console.log("Swiggy Data:", json);
+            //console.log("Swiggy Data:", json);
 
             setResInfo(json?.data);
 
